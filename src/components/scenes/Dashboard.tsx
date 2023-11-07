@@ -33,6 +33,7 @@ const Dashboard: React.FC = () => {
         latitude: 51.1614,
         longitude: 4.9654,
       },
+      status: "Seen",
     },
     {
       id: "2",
@@ -41,6 +42,7 @@ const Dashboard: React.FC = () => {
         latitude: 51.1624,
         longitude: 4.9644,
       },
+      status: "Seen",
     },
     // ... more devices
   ];
@@ -84,7 +86,7 @@ const Dashboard: React.FC = () => {
         />
       </Box>
       <Box p="20px" m="20px" maxHeight="200px" height="200px" width="75vw">
-        <MapWrapper devices={devices}/>
+        <MapWrapper devices={devices} width="78vw" height="50vh"/>
       </Box>
     </Box>
   );

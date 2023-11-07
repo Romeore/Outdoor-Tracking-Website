@@ -1,0 +1,23 @@
+/* DeviceGrid.css */
+
+.dataGridContainer {
+    height: 500px;
+    width: calc(100% - 240px); /* Adjust the width based on the sidebar */
+    margin-left: 120px; /* Offset from the sidebar */
+    background-color: white;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin-top: 60px; /* Add some space above the grid for the title */
+  }
+  
+  /* Styles for the title */
+  .gridTitleContainer {
+    text-align: center;
+  }
+  
+  .gridTitle {
+    font-size: 24px; /* Adjust the size as needed */
+    color: #333; /* Title color */
+    padding: 20px 0; /* Adjust spacing around the title */
+  }
+  

@@ -5,4 +5,5 @@ export interface Device {
     latitude: number;
     longitude: number;
   };
+  status: 'Seen' | 'Missing' | 'Repair';
 };

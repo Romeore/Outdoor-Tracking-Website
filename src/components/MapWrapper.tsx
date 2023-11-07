@@ -13,15 +13,17 @@ const center = { lat: 51.1609, lng: 4.9614 };
 
 interface MapWrapperProps {
   devices: Device[];
+  height: string;
+  width: string;
 }
 
-const MapWrapper: React.FC<MapWrapperProps> = ({devices}) =>
+const MapWrapper: React.FC<MapWrapperProps> = ({devices, height, width}) =>
 {
   return (
     <MapContainer
-      style={{ height: "50vh", width: "78vw" }}
+      style={{ height: height, width: width }}
       center={center}
-      zoom={16}
+      zoom={15}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
