@@ -1,0 +1,36 @@
+/* StatusBox.css */
+.status-boxes {
+    display: flex;
+    justify-content: space-between; /* This will add space between your status boxes */
+    padding: 20px; /* This adds padding around the entire container of boxes */
+  }
+  
+  .status-box {
+    flex: 1; /* This will make sure each box takes equal space */
+    margin: 0 10px; /* This adds horizontal spacing between each card */
+    background: white; /* Assuming a card look with white background */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Simple shadow for a card effect */
+    border-radius: 8px; /* Rounded corners for the card */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the content */
+    justify-content: center; /* Center the content vertically */
+  }
+  
+  .status-box h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #333; /* Dark grey color for the title */
+  }
+  
+  .status-box p {
+    margin: 0;
+    font-size: 2rem;
+    color: #666; /* Light grey color for the number */
+  }
+  
+  .app {
+    background-color: #333;
+  }
