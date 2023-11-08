@@ -23,35 +23,15 @@ const zoomLevel: number = 13;
 
 const Dashboard: React.FC = () => {
   const [devicesInfo, setDevicesInfo] = useState<DevicesInfo | null>(null);
-  
 
-  const devices: Device[] = [
-    {
-      id: "1",
-      name: "Device 1",
-      location: {
-        latitude: 51.1614,
-        longitude: 4.9654,
-      },
-    },
-    {
-      id: "2",
-      name: "Device 2",
-      location: {
-        latitude: 51.1624,
-        longitude: 4.9644,
-      },
-    },
-    // ... more devices
-  ];
+  const [devices, setDevices] = useState<Device[]>([]);
 
   useEffect(() => {
-    // TODO: Replace with your backend API endpoint
+    fetch('http://localhost:3001/devices').then(
+      response => response.json()).then(data => setDevices(data));
 
     setDevicesInfo({ total: 4, seen: 2, missing: 1, repair: 1 });
-    // fetch('/api/gps-data')
-    //   .then(response => response.json())
-    //   .then(data => setDeviceData(data));
+
   }, []);
 
   if (!devicesInfo) {
@@ -84,7 +64,7 @@ const Dashboard: React.FC = () => {
         />
       </Box>
       <Box p="20px" m="20px" maxHeight="200px" height="200px" width="75vw">
-        <MapWrapper devices={devices}/>
+        <MapWrapper devices={devices} width="78vw" height="50vh"/>
       </Box>
     </Box>
   );

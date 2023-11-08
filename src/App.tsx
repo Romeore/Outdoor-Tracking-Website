@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/scenes/Dashboard";
+import DeviceGrid from "./components/scenes/DeviceGrid";
 // import DataGridComponent from "./DataGridComponent"; // You need to create this component
 import Sidebar from "./components/Sidebar";
 import { Box } from "@mui/material";
+import MapView from "./components/scenes/MapView";
 
 function App() {
   const drawerWidth = 240;
@@ -31,7 +33,8 @@ function App() {
           <Sidebar />
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            {/* <Route path="/datagrid" element={<DataGridComponent />} /> */}
+            <Route path="/devices" element={<DeviceGrid />} />
+            <Route path="/map" element={<MapView />} />
           </Routes>
         </Box>
       </div>
