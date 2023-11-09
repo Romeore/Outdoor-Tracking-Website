@@ -2,14 +2,14 @@
 import React, { useEffect, useState } from "react";
 import StatusBox from "../StatusBox";
 import MapWrapper from "../MapWrapper";
-import "../StatusBox.css"; 
+import "../StatusBox.css";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import RuleIcon from "@mui/icons-material/Rule";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import Box from "@mui/material/Box";
 import Header from "../Header";
-import { Device } from '../Device'; 
+import { Device } from "../Device";
 
 interface DevicesInfo {
   total: number;
@@ -24,11 +24,15 @@ const Dashboard: React.FC = () => {
   const [devices, setDevices] = useState<Device[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/devices').then(
-      response => response.json()).then(data => setDevices(data));
+    fetch("http://localhost:3001/seenDevices")
+      .then((response) => response.json())
+      .then((data) => setDevices(data));
+
+    // fetch("http://localhost:3001/devicesStatus")
+    //   .then((response) => response.json())
+    //   .then((data) => setDevicesInfo(data));
 
     setDevicesInfo({ total: 4, seen: 2, missing: 1, repair: 1 });
-
   }, []);
 
   if (!devicesInfo) {
@@ -61,7 +65,7 @@ const Dashboard: React.FC = () => {
         />
       </Box>
       <Box p="20px" m="20px" maxHeight="200px" height="200px" width="75vw">
-        <MapWrapper devices={devices} width="78vw" height="50vh"/>
+        <MapWrapper devices={devices} width="78vw" height="50vh" />
       </Box>
     </Box>
   );
