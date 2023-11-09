@@ -18,9 +18,6 @@ interface DevicesInfo {
   repair: number;
 }
 
-const initialPosition: L.LatLngExpression = [51.505, -0.09]; // Thomas More, Geel
-const zoomLevel: number = 13;
-
 const Dashboard: React.FC = () => {
   const [devicesInfo, setDevicesInfo] = useState<DevicesInfo | null>(null);
 
