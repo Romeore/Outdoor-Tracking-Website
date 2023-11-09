@@ -28,11 +28,16 @@ const Dashboard: React.FC = () => {
       .then((response) => response.json())
       .then((data) => setDevices(data));
 
-    // fetch("http://localhost:3001/devicesStatus")
-    //   .then((response) => response.json())
-    //   .then((data) => setDevicesInfo(data));
-
-    setDevicesInfo({ total: 4, seen: 2, missing: 1, repair: 1 });
+    fetch("http://localhost:3001/devicesStatus").then((response) =>
+      response.json().then((data) => {
+        setDevicesInfo({
+          total: data.total,
+          seen: data.seen,
+          missing: data.missing,
+          repair: data.repair,
+        });
+      })
+    );
   }, []);
 
   if (!devicesInfo) {
