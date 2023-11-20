@@ -1,6 +1,24 @@
 = Website Repo | BIP Challenge 1 - Asset Material Tracking Outdoors
 
+== Getting Started
+
+=== Dependency management
+`yarn install` is used to install all dependencies listed within `package.json` in the local node_modules folder for a project. This is most commonly used when you have just checked out code for a project, or when another developer on the project has added a new dependency that you need to pick up.
+
+=== Run the app 
+`yarn start` runs the app in development mode. Open http://localhost:3000 to view it in the browser.
+
+=== Production build
+`yarn build` builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.
+
+Your app is ready to be deployed.
+
+
 == Getting Started with Create React App
+
+WARNING: These are default instructions. We moved to yarn as our default package manager, so ideally they shouldn't be used / necessary. 
 
 This project was bootstrapped with https://github.com/facebook/create-react-app[Create React App].
 
