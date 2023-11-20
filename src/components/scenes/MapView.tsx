@@ -1,37 +1,22 @@
 import MapWrapper from "../MapWrapper";
 import Box from "@mui/material/Box";
-import { Device } from '../Device'; 
+import { Device } from "../Device";
+import { useEffect, useState } from "react";
 
-
-const devices: Device[] = [
-    {
-      id: "1",
-      name: "Device 1",
-      location: {
-        latitude: 51.1614,
-        longitude: 4.9654,
-      },
-      status: "Seen",
-    },
-    {
-      id: "2",
-      name: "Device 2",
-      location: {
-        latitude: 51.1624,
-        longitude: 4.9644,
-      },
-      status: "Seen",
-    },
-    // ... more devices
-  ];
 const MapView: React.FC = () => {
+  const [devices, setDevices] = useState<Device[]>([]);
 
-    return (
-        <Box m="20px">
-            <MapWrapper devices={devices} width="82vw" height="95vh" />
-        </Box>
-      );
+  useEffect(() => {
+    fetch("http://localhost:3001/seenDevices")
+      .then((response) => response.json())
+      .then((data) => setDevices(data));
+  });
 
-}
+  return (
+    <Box m="20px">
+      <MapWrapper devices={devices} width="82vw" height="95vh" />
+    </Box>
+  );
+};
 
 export default MapView;
