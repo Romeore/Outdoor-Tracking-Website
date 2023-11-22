@@ -24,20 +24,47 @@ const Dashboard: React.FC = () => {
   const [devices, setDevices] = useState<Device[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/seenDevices")
-      .then((response) => response.json())
-      .then((data) => setDevices(data));
+    const fetchSeenDevices = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/seenDevices");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const jsonData = await response.json();
+        setDevices(jsonData);
+      } catch (err) {
+        console.error("Fetch seen devices error:", err);
+        return null;
+      }
+    };
 
-    fetch("http://localhost:3001/devicesStatus").then((response) =>
-      response.json().then((data) => {
+    const fetchDevicesStatus = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/devicesStatus");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
         setDevicesInfo({
           total: data.total,
           seen: data.seen,
           missing: data.missing,
           repair: data.repair,
         });
-      })
-    );
+      } catch (err) {
+        console.error("Fetch devices status error:", err);
+        setDevicesInfo({
+          total: -1,
+          seen: -1,
+          missing: -1,
+          repair: -1,
+        });
+      }
+    };
+
+    fetchSeenDevices();
+    fetchDevicesStatus();
+   
   }, []);
 
   if (!devicesInfo) {
