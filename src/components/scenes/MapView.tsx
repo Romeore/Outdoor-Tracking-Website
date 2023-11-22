@@ -7,9 +7,22 @@ const MapView: React.FC = () => {
   const [devices, setDevices] = useState<Device[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/seenDevices")
-      .then((response) => response.json())
-      .then((data) => setDevices(data));
+    
+    const fetchSeenDevices = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/seenDevices");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const jsonData = await response.json();
+        setDevices(jsonData);
+      } catch (err) {
+        console.error("Fetch seen devices error:", err);
+        return null;
+      }
+    };
+
+    fetchSeenDevices();
   });
 
   return (

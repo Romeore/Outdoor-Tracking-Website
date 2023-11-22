@@ -77,9 +77,21 @@ const DeviceGrid: React.FC = () => {
   const [devices, setDevices] = useState<Device[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/devices")
-      .then((response) => response.json())
-      .then((data) => setDevices(data));
+    const fetchData = async () => {
+      try {
+          const response = await fetch('http://localhost:3001/devices');
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          const jsonData = await response.json();
+          setDevices(jsonData);
+      } catch (err) {
+          console.error('Fetch error:', err);
+      }
+  };
+
+  fetchData();
+
   });
 
   return (
