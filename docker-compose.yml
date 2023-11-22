@@ -1,0 +1,8 @@
+services: 
+  app: 
+    container_name: findo-docker
+    image: findo-docker
+    build:
+      context: .
+    ports:
+      - 8080:80
