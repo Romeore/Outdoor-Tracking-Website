@@ -2,16 +2,13 @@ stages:
   - build
   - test
 
-default:
-  before_script:
-    - docker info
-
 website_build:
   image: docker:latest
   stage: build
   services:
     - docker:dind
   script:
+    - docker info
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY
     - echo $CI_PROJECT_NAME
