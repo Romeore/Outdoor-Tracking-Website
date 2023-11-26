@@ -1,0 +1,16 @@
+stages: 
+  - build
+  - test
+
+
+build:
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - echo $CI_REGISTRY_USER
+    - echo $CI_REGISTRY
+    - echo $CI_REGISTRY_PASSWORD |docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -t $CI_REGISTRY/group/project/image:latest .
+    - docker push $CI_REGISTRY/group/project/image:latest
