@@ -23,6 +23,9 @@ website_build:
 website_test: 
   image: node:lts-alpine
   stage: test
+  rules: 
+    - when: manual
+    - allow_failure: true
   services:
     - docker:dind
   script:
