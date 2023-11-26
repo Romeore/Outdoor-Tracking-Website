@@ -24,10 +24,11 @@ website_build:
     - docker push $CI_REGISTRY_IMAGE:latest
 
 website_test: 
-  image: docker:latest
+  image: node:lts-alpine
   stage: test
   services:
     - docker:dind
   script:
     - pwd
+    - ls -al
     - yarn test
