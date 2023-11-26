@@ -1,6 +1,7 @@
 stages: 
   - build
   - test
+  - deploy
 
 website_build:
   image: docker:latest
@@ -32,3 +33,15 @@ website_build:
     - pwd
     - ls -al
     - yarn test
+
+website_deploy: 
+  image: alpine:latest
+  stage: deploy
+  services:
+    - docker:dind
+  script:
+    - chmod og= $ID_RSA
+    - apk update && apk add openssh-client
+    - ssh -i $ID_ED25519 -o StrictHostKeyChecking=no $BIP_VM1_USER@BIP_VM1_IP "touch erfolg"
+  only:
+    - main
