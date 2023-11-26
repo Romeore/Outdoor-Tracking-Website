@@ -40,7 +40,7 @@ website_deploy:
   services:
     - docker:dind
   script:
-    - chmod og= $ID_RSA
+    - chmod og= $ID_ED25519
     - apk update && apk add openssh-client
     - ssh -i $ID_ED25519 -o StrictHostKeyChecking=no $BIP_VM1_USER@BIP_VM1_IP "touch erfolg"
   only:
