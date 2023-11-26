@@ -42,6 +42,6 @@ website_deploy:
   script:
     - chmod og= $ID_ED25519
     - apk update && apk add openssh-client
-    - ssh -i $ID_ED25519 -o StrictHostKeyChecking=no $BIP_VM1_USER@BIP_VM1_IP "touch erfolg"
+    - ssh -i $ID_ED25519 -o StrictHostKeyChecking=no $BIP_VM1_USER@$BIP_VM1_IP "touch erfolg"
   only:
     - main
