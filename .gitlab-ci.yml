@@ -42,6 +42,11 @@ website_deploy:
   script:
     - chmod og= $ID_ED25519
     - apk update && apk add openssh-client
-    - ssh -i $ID_ED25519 -o StrictHostKeyChecking=no $BIP_VM1_USER@$BIP_VM1_IP "touch erfolg"
+    - ssh -i $ID_ED25519 -o StrictHostKeyChecking=no $BIP_VM1_USER@$BIP_VM1_IP "echo $CI_REGISTRY >> erfolg"
+    - ssh -i $ID_ED25519 -o StrictHostKeyChecking=no $BIP_VM1_USER@$BIP_VM1_IP "echo $CI_REGISTRY_PASSWORD |docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin"
+    - ssh -i $ID_ED25519 -o StrictHostKeyChecking=no $BIP_VM1_USER@$BIP_VM1_IP "docker pull $CI_REGISTRY_IMAGE:latest"
+    - ssh -i $ID_ED25519 -o StrictHostKeyChecking=no $BIP_VM1_USER@$BIP_VM1_IP "docker container rm -f findo || true"
+    - ssh -i $ID_ED25519 -o StrictHostKeyChecking=no $BIP_VM1_USER@$BIP_VM1_IP "docker run -d -p 80:80 --name findo $CI_REGISTRY_IMAGE:latest"
+
   only:
     - main
