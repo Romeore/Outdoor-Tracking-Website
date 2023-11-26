@@ -2,6 +2,9 @@ stages:
   - build
   - test
 
+default:
+  before_script:
+    - docker info
 
 build:
   image: docker:latest
@@ -11,6 +14,11 @@ build:
   script:
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY
+    - echo $CI_PROJECT_NAME
+    - echo $CI_PROJECT_NAMESPACE
+    - echo $CI_PROJECT_PATH
+    - echo $CI_PROJECT_ROOT_NAMESPACE
+    - echo $CI_REGISTRY_IMAGE
     - echo $CI_REGISTRY_PASSWORD |docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
-    - docker build -t $CI_REGISTRY/group/project/image:latest .
-    - docker push $CI_REGISTRY/group/project/image:latest
+#    - docker build -t $CI_REGISTRY/group/project/image:latest .
+#    - docker push $CI_REGISTRY/group/project/image:latest
