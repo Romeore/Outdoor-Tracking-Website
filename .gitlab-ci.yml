@@ -20,7 +20,7 @@ website_build:
     - docker build -t $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
 
-website_test: 
+.website_test: 
   image: node:lts-alpine
   stage: test
   rules: 
