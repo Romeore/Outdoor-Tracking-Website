@@ -1,0 +1,22 @@
+.select-box {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .select-box:hover {
+    border-color: #888;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  
+  .select-box:focus {
+    outline: none;
+    border-color: #555;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
