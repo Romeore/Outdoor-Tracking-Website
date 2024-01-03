@@ -6,6 +6,7 @@ import DeviceGrid from "./components/scenes/DeviceGrid";
 import Sidebar from "./components/Sidebar";
 import { Box } from "@mui/material";
 import MapView from "./components/scenes/MapView";
+import GPSDataGraph from "./components/scenes/GPSDataGraph";
 
 function App() {
   const drawerWidth = 240;
@@ -35,6 +36,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/devices" element={<DeviceGrid />} />
             <Route path="/map" element={<MapView />} />
+            <Route path="/graph" element={<GPSDataGraph />} />
           </Routes>
         </Box>
       </div>

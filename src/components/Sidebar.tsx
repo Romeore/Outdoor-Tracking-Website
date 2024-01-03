@@ -4,6 +4,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import TimelineIcon from '@mui/icons-material/Timeline';
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import GridOnIcon from "@mui/icons-material/GridOn";
 import { useNavigate } from "react-router-dom";
@@ -51,6 +52,14 @@ const Sidebar: React.FC = () => {
             <MapIcon />
           </ListItemIcon>
           <ListItemText primary="Map" />
+        </ListItem>
+
+        {/* Graph Menu Item */}
+        <ListItem button onClick={() => navigate("/graph")}>
+          <ListItemIcon>
+            <TimelineIcon />
+          </ListItemIcon>
+          <ListItemText primary="Graph" />
         </ListItem>
       </List>
     </Drawer>
