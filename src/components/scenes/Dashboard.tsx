@@ -26,7 +26,7 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchSeenDevices = async () => {
       try {
-        const response = await fetch("http://localhost:3001/seenDevices");
+        const response = await fetch("http://findo.armata.info:3001/seenDevices");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
 
     const fetchDevicesStatus = async () => {
       try {
-        const response = await fetch("http://localhost:3001/devicesStatus");
+        const response = await fetch("http://findo.armata.info:3001/devicesStatus");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

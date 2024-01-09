@@ -28,7 +28,7 @@ const GPSDataGraph: React.FC = () => {
   useEffect(() => {
     const fetchDevices = async () => {
       try {
-        const response = await fetch("http://localhost:3001/devices");
+        const response = await fetch("http://findo.armata.info:3001/devices");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
