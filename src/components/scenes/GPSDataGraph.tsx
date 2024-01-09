@@ -89,6 +89,16 @@ const GPSDataGraph: React.FC = () => {
       timestamp: item.timestamp,
     }));
 
+    let yAxisDomain;
+    if(scatterData[0].status !== 'Seen') {
+      yAxisDomain = [0,-1];
+    }
+    else if (selectedMetric === 'latitude') {
+        yAxisDomain = [51.15, 51.16]; 
+    } else if (selectedMetric === 'longitude') {
+      yAxisDomain = [4.97, 4.98]; // Adjust this for your longitude data
+    }
+
   return (
     <Box m="20px">
       <Header title="Graph" subtitle="Displays devices over time" />
@@ -161,6 +171,7 @@ const GPSDataGraph: React.FC = () => {
                 type="number"
                 dataKey="value"
                 name={selectedMetric}
+                domain={yAxisDomain}
                 unit="°"
               />
               <Tooltip />
