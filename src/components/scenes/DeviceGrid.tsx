@@ -79,20 +79,23 @@ const DeviceGrid: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-          const response = await fetch('http://findo.armata.info:3001/devices');
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-          const jsonData = await response.json();
-          setDevices(jsonData);
+        const response = await fetch('http://findo.armata.info:3001/devices');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonData: Device[] = await response.json();
+  
+        const distinctDevices = Array.from(new Set(jsonData.map((device: Device) => device.id)))
+                                     .map(id => jsonData.find((device: Device) => device.id === id))
+                                     .filter((device): device is Device => device !== undefined);
+        setDevices(distinctDevices);
       } catch (err) {
-          console.error('Fetch error:', err);
+        console.error('Fetch error:', err);
       }
-  };
-
-  fetchData();
-
-  });
+    };
+  
+    fetchData();
+  }, []);
 
   return (
     <Box m="20px">
